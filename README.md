@@ -1,5 +1,5 @@
 # aws-autotag
-Example CloudFormation template to create a lambda function that automatically tags EC2 resources when they are created.
+Example CloudFormation template to create a Lambda function that automatically tags EC2 resources when they are created.
 
 ## Details
 
