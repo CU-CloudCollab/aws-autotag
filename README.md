@@ -1,5 +1,5 @@
 # aws-autotag
-Example CloudFormation template to create a lambda function that automatically tags EC2 resources when they are created
+Example CloudFormation template to create a lambda function that automatically tags EC2 resources when they are created.
 
 ## Details
 
@@ -9,11 +9,11 @@ This AWS CloudFormation template creates a Lambda function and necessary infrast
 
 ## Resources Created
 
-* Lambda function itself
+* the Lambda function itself
   * An explicit "stable" version of the function
   * "PROD" alias to the "stable" version.
-* IAM role for the lambda function to assume when executing (which allows the function to create tags and describe EC2 resources).
-* CloudWatch rule to trigger the Lambda function when an EC2 resource is created. I.e., upon any of the following events:
+* an IAM role for the lambda function to assume when executing (which allows the function to create tags and describe EC2 resources).
+* a CloudWatch rule to trigger the Lambda function when an EC2 resource is created. I.e., upon any of the following events:
   * CreateVolume
   * RunInstances
   * CreateImage
@@ -22,8 +22,8 @@ This AWS CloudFormation template creates a Lambda function and necessary infrast
 
 ## Testing
 
-Once the Lambda function is created by the CloudFormation template, you can manually configure the function to use [the included test event](https://github.com/CU-CloudCollab/aws-autotag/blob/master/test-event.json) to test the Lambda function in the AWS console.
+Once the Lambda function is created by the CloudFormation template, you can manually configure the function to use the included test event [test-event.json](https://github.com/CU-CloudCollab/aws-autotag/blob/master/test-event.json) to test the Lambda function in the AWS console.
 
 ## Known Issues
 
-* Presently, this function misses tagging snapshots created when an image is created. It tags the image itself, but not the snapshots underlying the image because those snapshot creations are not first class events. To fix this, the Lambda function would need to pick apart the sub resource (volumes) that makeup the snapshot during the CreateSnapshot event.
+* Presently, this function misses tagging snapshots created when an image is created. It tags the image itself, but not the snapshots underlying the image because those snapshot creations are not first class events. To fix this, the Lambda function probably would need to pick apart the sub resource (volumes) that makeup the snapshot during the CreateSnapshot event.
